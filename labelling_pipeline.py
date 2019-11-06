@@ -8,7 +8,7 @@ Pipeline to perform both fuzzy matching and then label propagation for
 labelling clothing data
 
 """
-
+import difflib
 from fuzzywuzzy import fuzz
 from nltk.metrics import distance
 
@@ -17,6 +17,9 @@ from importlib import reload
 import clean_most_common
 import Word_vectors
 import Label_matching
+
+
+
 reload(Label_matching)
 
 
@@ -29,7 +32,8 @@ def labelling_pipeline(data, nwords=15, names=None, stopwords=None,
                        cat_clean=True, division=None, category=None,
                        subcategory=None, doc2vec_thresh=0.5, tfidf_thresh=0.5,
                        count_thresh=0.5, fast_thresh=0.5, word2vec_thresh=0.5,
-                       wv_names=['doc2vec', 'tfidf', 'count']):
+                       wv_names=['doc2vec', 'tfidf', 'count'],
+                       difflib=True):
     """Function pipeline to clean, match to labels and label propogate through
     a dataframe. Function is based on notebook Clean_label_coats_sample and
     functions there in.
@@ -64,6 +68,8 @@ def labelling_pipeline(data, nwords=15, names=None, stopwords=None,
                               label propogation tfidf vectors
         count_thresh (float): threshold propoabilty for label to be 1 in
                               label propogation count vectors
+        difflib (bool): force difflib to be used over python-Levenshtein lawith fuzzywuzzy when fuzzy matching
+            default is True as fuzzy matching params are set for difflib.
 
     Returns:
         (tuple):
@@ -94,6 +100,9 @@ def labelling_pipeline(data, nwords=15, names=None, stopwords=None,
     # calculate closeness metric
     print('Fuzzy Matching')
 
+    if difflib:
+        # force fuzzywuzzy to use the difflib library as there are differences with python-Levenshtein
+        fuzz.SequenceMatcher = difflib.SequenceMatcher
     cleaned, cols1 = Label_matching.calculate_ratio(cleaned, label_names,
                                                     fuzz.partial_ratio)
     # Find matches above acceptance threshold
