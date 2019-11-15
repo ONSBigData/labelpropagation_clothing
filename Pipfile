@@ -4,6 +4,8 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+autopep8 = "*"
+yapf = "*"
 
 [packages]
 gensim = "==3.8.1"
@@ -16,6 +18,8 @@ fuzzywuzzy = "==0.16.0"
 nltk = "==3.2.3"
 scikit-learn = "==0.20.0"
 ipykernel = "*"
+tqdm = "*"
+ipywidgets = "*"
 
 [requires]
 python_version = "3.6"

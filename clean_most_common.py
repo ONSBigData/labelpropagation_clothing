@@ -112,7 +112,7 @@ def most_common_words(names, nwords=15, rem_punc=True,
     return common, word_dist
 
 
-def split_on_commonwords(common, names):
+def split_on_common_words(common, names):
     """
     Function to split names containg common words from those that don't.
     data_clean has files with names contianing most common words, data_bad
