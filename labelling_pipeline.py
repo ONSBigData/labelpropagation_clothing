@@ -7,8 +7,10 @@ Created on Fri Jun  1 10:34:04 2018
 Pipeline to perform both fuzzy matching and then label propagation for
 labelling clothing data
 
-"""
+The function labelling pipeline is to run the pipeline for a single item category.
+This function
 
+"""
 
 import importlib
 import clean_most_common
@@ -75,6 +77,10 @@ class UnknownMethod(Exception):
     pass
 
 
+class UnknownParameter(Exception):
+    pass
+
+
 class LabellingError(Exception):
     pass
 
@@ -82,12 +88,10 @@ class LabellingError(Exception):
 def labelling_pipeline(data, matching_params=matching_list,
                        word_vectorizer_params=word_vectorizer_params,
                        n_words=15, names=None, stop_words=None,
-                        item_id=None, label_names=None,
-                       param_doc2vec=None, param_tfidf=None, common_words=True,
-                       param_count=None, negative_labels=True, n_negative=15,
+                        item_id=None, label_names=None, common_words=True,
                        cat_clean=True, division=None, category=None,
-                       subcategory=None,
-                       wv_names=['doc2vec', 'tfidf', 'count'], verbose=True,
+                       subcategory=None, wv_names=("doc2vec", "tfidf", "count"),
+                       verbose=True,
                        use_difflib=True ):
 
         """Function pipeline to clean, match to labels and label propogate through
@@ -157,7 +161,7 @@ def labelling_pipeline(data, matching_params=matching_list,
         # calculate closeness metric
         logging.info('Fuzzy Matching')
 
-
+        # TODO: Consider refactoring to loop within rather than over the function, similar to run_label_propagation()
         # Find matches above acceptance threshold, passing the parameters defined
         for match_dict in tqdm.tqdm(matching_params, desc="Fuzzy matching in progress:"):
             match, cleaned = fuzzy_matching(cleaned, item_id, label_names, **match_dict)
@@ -176,7 +180,7 @@ def labelling_pipeline(data, matching_params=matching_list,
 
         if len(cleaned.loc[cleaned['label_fuzzyMatch'] == 0]) == 0:
             try:
-                embeddings_dict = word_vectors(cleaned, wv_names, **word_vectorizer_params)
+                embeddings_dict = create_word_vectors(cleaned, wv_names, **word_vectorizer_params)
 
             except IndexError:
                 # if we get an IndexError, it is likely there are not any negative labels
@@ -184,133 +188,13 @@ def labelling_pipeline(data, matching_params=matching_list,
                                      + " adjusting fuzzy matching hyperparameters")
 
         else:
-            embeddings_dict = word_vectors(cleaned, wv_names, **word_vectorizer_params)
-
-        # Label propogation
-        # Create label propagation labels
-        # Labeld accepted if label distribution probabilities are
-        # above give threshold, default is 0.5
+            embeddings_dict = create_word_vectors(cleaned, wv_names, **word_vectorizer_params)
 
         logging.info("Label propagation")
-
         cleaned = run_label_propagation(embeddings_dict, cleaned)
 
-        # label_prop_params =[{"name": "doc2vec"}]
-        for vectype in wv_names:
-            if vectype == 'doc2vec':
-                # doc2vec: first create input vector then perform label
-                print('label propogation: dov2vec')
-                input_doc2vec = doc2vec_mod.docvecs.vectors_docs
-                label_doc2vec = (semi.label_propagation.LabelSpreading()
-                                                  .set_params(**param_doc2vec))
-                label_doc2vec.fit(input_doc2vec,
-                                  cleaned.loc[:, 'label_fuzzyMatch'])
-
-                # label all point -1, then change according to label distributions
-                cleaned.loc[:, 'label_labprop_d2v'] = -1
-                cleaned.loc[label_doc2vec.label_distributions_[:, 1] >= doc2vec_thresh,
-                            'label_labprop_d2v'] = 1
-                cleaned.loc[label_doc2vec.label_distributions_[:, 0] >= doc2vec_thresh,
-                            'label_labprop_d2v'] = 0
-
-            if vectype == 'tfidf':
-                # Label Propagation:- TFIDF
-                print('label propogation: TF-IDF')
-
-                input_tfidf = tfidf_matrix.toarray()
-                label_tfidf = semi.label_propagation.LabelSpreading()\
-                                               .set_params(**param_tfidf)
-                label_tfidf.fit(input_tfidf, cleaned.loc[:, 'label_fuzzyMatch'])
-
-                # Create labels TF-IDF
-                cleaned.loc[:, 'label_labprop_tfidf'] = -1
-                cleaned.loc[label_tfidf.label_distributions_[:, 1] >= tfidf_thresh,
-                            'label_labprop_tfidf'] = 1
-                cleaned.loc[label_tfidf.label_distributions_[:, 0] >= tfidf_thresh,
-                            'label_labprop_tfidf'] = 0
-
-            if vectype == 'count':
-                # Label Propagation Count vectorization
-                print('label propogation: Count vectorizer')
-
-                input_count = count_matrix.toarray()
-                label_count = semi.label_propagation.LabelSpreading()\
-                                               .set_params(**param_count)
-                label_count.fit(input_count, cleaned.loc[:, 'label_fuzzyMatch'])
-
-                # create label Count vectorizer
-                cleaned.loc[:, 'label_labprop_count'] = -1
-                cleaned.loc[label_count.label_distributions_[:, 1] >= count_thresh,
-                            'label_labprop_count'] = 1
-                cleaned.loc[label_count.label_distributions_[:, 0] >= count_thresh,
-                            'label_labprop_count'] = 0
-
-            if vectype == 'word2vec':
-                print('label propogation: word2vec')
-
-                label_w2v = semi.label_propagation.LabelSpreading()\
-                                             .set_params(**param_doc2vec)
-                label_w2v.fit(w2v_vec, cleaned.loc[:, 'label_fuzzyMatch'])
-
-                # create label word2vec vectorizer
-                cleaned.loc[:, 'label_labprop_w2v'] = -1
-                cleaned.loc[label_w2v.label_distributions_[:, 1] >= word2vec_thresh,
-                            'label_labprop_w2v'] = 1
-                cleaned.loc[label_w2v.label_distributions_[:, 0] >= word2vec_thresh,
-                            'label_labprop_w2v'] = 0
-
-            if vectype == 'fast':
-                print('label propogation: fast')
-
-                label_fast = semi.label_propagation.LabelSpreading()\
-                                              .set_params(**param_doc2vec)
-                label_fast.fit(fast_vec, cleaned.loc[:, 'label_fuzzyMatch'])
-
-                # create label word2vec vectorizer
-                cleaned.loc[:, 'label_labprop_fast'] = -1
-                cleaned.loc[label_fast.label_distributions_[:, 1] >= fast_thresh,
-                            'label_labprop_fast'] = 1
-                cleaned.loc[label_fast.label_distributions_[:, 0] >= fast_thresh,
-                            'label_labprop_fast'] = 0
-
-        if len(wv_names) >= 2:
-            if ('fast' in wv_names) & ('word2vec' in wv_names) & ('doc2vec' in wv_names):
-                mode = cleaned[['label_labprop_fast', 'label_labprop_d2v',
-                                'label_labprop_w2v']].mode(axis=1)
-
-            elif ('fast' in wv_names) & ('word2vec' in wv_names):
-                mode = cleaned[['label_labprop_fast', 'label_labprop_tfidf',
-                                'label_labprop_w2v']].mode(axis=1)
-            elif 'word2vec' in wv_names:
-                mode = cleaned[['label_labprop_w2v', 'label_labprop_tfidf',
-                                'label_labprop_count']].mode(axis=1)
-
-            elif 'fast' in wv_names:
-                mode = cleaned[['label_labprop_fast', 'label_labprop_tfidf',
-                                'label_labprop_count']].mode(axis=1)
-
-            elif 'doc2vec' in wv_names:
-
-                mode = cleaned[['label_labprop_d2v', 'label_labprop_tfidf',
-                                'label_labprop_count']].mode(axis=1)
-            cleaned.loc[:, 'label_labprop'] = mode[0]
-
-            # if not assigned label as -1 for unlabelled
-            if mode.shape[1] > 1:
-                cleaned.loc[mode[1].notnull(), 'label_labprop'] = -1
-        else:
-            if vectype == 'doc2vec':
-                cleaned['label_labprop'] = cleaned['label_labprop_d2v']
-            elif vectype == 'tfidf':
-                cleaned['label_labprop'] = cleaned['label_labprop_tfidf']
-            elif vectype == 'count':
-                cleaned['label_labprop'] = cleaned['label_labprop_count']
-            elif vectype == 'fast':
-                cleaned['label_labprop'] = cleaned['label_labprop_fast']
-            elif vectype == 'word2vec':
-                cleaned['label_labprop'] = cleaned['label_labprop_w2v']
-            else:
-                print('vector type unknown')
+        logging.info("Finding modal labels")
+        cleaned = get_modal_labels(cleaned, methods=list(embeddings_dict.keys()))
 
         return cleaned
 
@@ -382,7 +266,7 @@ def clean_labels(cleaned, cat_clean, item_id, division, category, subcategory):
     return cleaned
 
 
-def word_vectors(cleaned, wv_names, **kwargs):
+def create_word_vectors(cleaned, wv_names, **kwargs):
 
     # Create array of product names for word vectorization
     names = Word_vectors.remove_stopwords(cleaned.loc[:, 'name'])
@@ -392,7 +276,7 @@ def word_vectors(cleaned, wv_names, **kwargs):
 
     for vectype in tqdm.tqdm(wv_names, desc="Computing vectors:"):
         try:
-            # TODO: tidy up if-else, I think there should be a better way of doing this
+            # TODO: tidy up if-else; I think there should be a better way of doing this
             if vectype == 'doc2vec':
                 doc2vec_mod = Word_vectors.fit_Doc2vec(names, epochs=kwargs["epochs"],
                                                        print_sim=kwargs["print_sim"])
@@ -445,7 +329,7 @@ def word_vectors(cleaned, wv_names, **kwargs):
 
             else:
                 raise UnknownMethod(f"{vectype} not recognised should be one of:"
-                                    + "doc2vec, tfidf, count, fast, word2vec")
+                                    "doc2vec, tfidf, count, fast, word2vec")
         except UnknownMethod:
             logging.warning(UnknownMethod)
 
@@ -454,16 +338,16 @@ def word_vectors(cleaned, wv_names, **kwargs):
 
 def run_label_propagation(embeddings_dict, cleaned):
 
+    # TODO: consider refactoring to loop over rather than within the function as with fuzzy_matching()
     for key in tqdm.tqdm(embeddings_dict, desc="Running label propagation"):
 
-        input = embeddings_dict[key]["vec"]
+        input_vector = embeddings_dict[key]["vec"]
         thresh = embeddings_dict[key]["thresh"]
         params = embeddings_dict[key]["params"]
 
-        label_mod = (semi.label_propagation.LabelSpreading()
-                         .set_params(**params))
+        label_mod = semi.label_propagation.LabelSpreading().set_params(**params)
 
-        label_mod.fit(input, cleaned.loc[:, 'label_fuzzyMatch'])
+        label_mod.fit(input_vector, cleaned.loc[:, 'label_fuzzyMatch'])
 
         # label all point -1, then change according to label distributions
         cleaned.loc[:, f'label_labprop_{key}'] = -1
@@ -471,6 +355,25 @@ def run_label_propagation(embeddings_dict, cleaned):
                     f'label_labprop_{key}'] = 1
         cleaned.loc[label_mod.label_distributions_[:, 0] >= thresh,
                     f'label_labprop_{key}'] = 0
+
+    return cleaned
+
+
+def get_modal_labels(cleaned, methods):
+
+    if len(methods) > 1:
+        logging.info("More than one method used, finding modal label")
+        labelprop_columns = [f"label_labprop_{method}" for method in methods]
+        modal_labels = cleaned[labelprop_columns].mode(axis=1)
+
+        cleaned["label_labprop_mode"] = modal_labels[0]
+
+        # if not assigned label as -1 for unlabelled
+        if modal_labels.shape[1] > 1:
+            cleaned.loc[modal_labels[1].notnull(), "label_labprop_mode"] = -1
+    else:
+        logging.info(f"Only single method used, setting labels for {methods[0]} as modal labels")
+        cleaned['label_labprop_mode'] = cleaned[f'label_labprop_{methods[0]}']
 
     return cleaned
 
