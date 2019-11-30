@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="37c9421d-02de-416d-ac76-a250e79c283e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/label_propagation_and_classification-Copy1-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/label_propagation_and_classification-Copy1-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/label_propagation_and_classification-Copy1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/label_propagation_and_classification-Copy1.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/labelpropagation_clothing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/labelpropagation_clothing.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/label_propagation_and_classification-Copy1-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/label_propagation_and_classification-Copy1.ipynb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/label_propagation_and_classification.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/label_propagation_and_classification.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/labelling_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/labelling_pipeline.py" afterDir="false" />
     </list>
@@ -19,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/labelling_pipeline.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="382" column="78" lean-forward="true" selection-start-line="382" selection-start-column="78" selection-end-line="382" selection-end-column="78" />
+            <state relative-caret-position="-90">
+              <caret line="42" column="3" lean-forward="true" selection-start-line="42" selection-start-column="3" selection-end-line="42" selection-end-column="3" />
               <folding>
                 <element signature="e#184#200#0" expanded="true" />
               </folding>
@@ -50,13 +50,13 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>names</find>
       <find>stopwords</find>
       <find>subcategory</find>
       <find>clea</find>
       <find>Word_vectors</find>
       <find>doc2vec_mod</find>
       <find>remove</find>
+      <find>names</find>
     </findStrings>
     <replaceStrings>
       <replace>stop_words</replace>
@@ -94,23 +94,11 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="labelpropagation_clothing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="labelpropagation_clothing" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -185,8 +173,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/labelling_pipeline.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="382" column="78" lean-forward="true" selection-start-line="382" selection-start-column="78" selection-end-line="382" selection-end-column="78" />
+        <state relative-caret-position="-90">
+          <caret line="42" column="3" lean-forward="true" selection-start-line="42" selection-start-column="3" selection-end-line="42" selection-end-column="3" />
           <folding>
             <element signature="e#184#200#0" expanded="true" />
           </folding>

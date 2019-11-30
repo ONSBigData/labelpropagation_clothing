@@ -88,115 +88,97 @@ class LabellingError(Exception):
 def labelling_pipeline(data, matching_params=matching_list,
                        word_vectorizer_params=word_vectorizer_params,
                        n_words=15, names=None, stop_words=None,
-                        item_id=None, label_names=None, common_words=True,
+                       item_id=1, label_names=None, common_words=True,
                        cat_clean=True, division=None, category=None,
                        subcategory=None, wv_names=("doc2vec", "tfidf", "count"),
                        verbose=True,
-                       use_difflib=True ):
+                       use_difflib=True):
 
-        """Function pipeline to clean, match to labels and label propogate through
-        a dataframe. Function is based on notebook Clean_label_coats_sample and
-        functions there in.
+    """
+    
+    Args:
+        data (DataFrame): contains item data 
+        matching_params (list): Contains a list of dictionaries with parameters for each fuzzy matching method 
+        word_vectorizer_params (dict): Contains parameters for fuzzy matching
+        n_words (int): number of words to use when cleaning most common words
+        stop_words (list): words to be removed from product names before matching
+        item_id: integer for new labels, set to 1 be default
+        label_names (list): strings that are the labels for matching
+        common_words (bool): flag to clean common words or not
+        cat_clean (bool): post label propagation step to clean division
+        division (string): name of division to clean
+        category (string): category to clean
+        subcategory: 
+        wv_names (list): word embedding methods to use, should be at least one of
+            - "doc2vec, tfidf, count, fast, word2vec"
+        verbose (bool): print logging statements
+        use_difflib (bool): forces fuzzywuzzy to use difflib.SequenceMatcher over python-levenschtein. The latter
+            is faster, however will require changing the string matching parameters from those provided as default.
 
-        Args:
-            data (DataFrame): input dataframe to be cleaned
-            n_words (int): number of words to use in cleaning with most common words
-            stop_words (list(str)): list of strings to be removed before finding
-                                   most common words
-            fuzzy_thres (float): threshold for fuzzy matching to be accepted
-            edit_thres (float): threshold for edit distance matching to be accepted
-            jacard_thres (float): threshold for jacard matching to be accepted
-            item_id (int): integer for the new labels, usually 1
-            label_names (list(str)): list of strings that are the labels
-                                     for matching
-            param_doc2vec (dict): dictionary with the parameters for label
-                                  propogation with doc2vec
-            param_tfidf (dict): dictionary with parameters for label propogation
-                                with tfidf vectors
-            param_count (dict): dictionary with parameters for label propogation
-                                with count vectors
-            common_words (bool): If True will clean dataframe with common words
-            negative_labels (bool): if True will randomly create negative labels
-                                    for label propogation
-            cat_clean (bool): If true will perform step after label propogation
-                              to clean a given division name from labels
-            division (str): String name of division to clean
-            category (str): string name of categories to clean
-            doc2vec_thresh (float): threshold propoabilty for label to be 1 in
-                                    label propogation doc2vec vectors
-            tfidf_thresh (float): threshold propoabilty for label to be 1 in
-                                  label propogation tfidf vectors
-            count_thresh (float): threshold propoabilty for label to be 1 in
-                                  label propogation count vectors
+    Returns:
+        (DataFrame) Cleaned and labelled dataframe
+    """
 
-        Returns:
-            (tuple):
-            :DataFrame: Cleaned and labelled dataframe
-            :array: Array containing doc2vec vectors
-            :array: Array containing TF-IDF vectors
-            :array: Array containing count vectors
-        """
+    # set to difflib library
+    if use_difflib:
+        logging.info("Using difflib for sequence matching with fuzzywuzzy")
+        fuzz.SequenceMatcher = difflib.SequenceMatcher
 
-        # set to difflib libarary
-        if use_difflib:
-            logging.info("Using difflib for sequence matching with fuzzywuzzy")
-            fuzz.SequenceMatcher = difflib.SequenceMatcher
+    # set up logging
+    log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    if verbose:
+        logging.basicConfig(level=logging.INFO, format=log_fmt)
+    else:
+        logging.basicConfig(level=logging.WARNING, format=log_fmt)
 
-        # set up logging
-        log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-        if verbose:
-            logging.basicConfig(level=logging.INFO, format=log_fmt)
-        else:
-            logging.basicConfig(level=logging.WARNING, format=log_fmt)
+    # If true section will clean file keeping those entries which contain
+    # most common words
+    names = data["name"]
+    logging.info('Cleaning with common words')
+    cleaned = clean_with_common_words(common_words, data, names, n_words, stop_words)
 
-        # If true section will clean file keeping those entries which contain
-        # most common words
+    logging.info(f'cleaned: {len(cleaned)}')
+    # Fuzzy Matching
+    # Fuzzy match label names using fuzzy_wuzzy partial ratio
+    # calculate closeness metric
+    logging.info('Fuzzy Matching')
 
-        logging.info('Cleaning with common words')
-        cleaned = clean_with_common_words(common_words, data, names, n_words, stop_words)
+    # TODO: Consider refactoring to loop within rather than over the function, similar to run_label_propagation()
+    # Find matches above acceptance threshold, passing the parameters defined
+    for match_dict in tqdm.tqdm(matching_params, desc="Fuzzy matching in progress:"):
+        match, cleaned = fuzzy_matching(cleaned, item_id, label_names, **match_dict)
 
-        logging.info(f'cleaned: {len(cleaned)}')
-        # Fuzzy Matching
-        # Fuzzy match label names using fuzzy_wuzzy partial ratio
-        # calculate closeness metric
-        logging.info('Fuzzy Matching')
+    # Assign labels where 2 of 3 string metrics agree
+    cleaned = assign_labels(cleaned,
+                            labels=[match_dict["label"] for match_dict in matching_params]
+                            )
 
-        # TODO: Consider refactoring to loop within rather than over the function, similar to run_label_propagation()
-        # Find matches above acceptance threshold, passing the parameters defined
-        for match_dict in tqdm.tqdm(matching_params, desc="Fuzzy matching in progress:"):
-            match, cleaned = fuzzy_matching(cleaned, item_id, label_names, **match_dict)
+    # perform broad category cleaning for accurate fuzzy labels
+    cleaned = clean_labels(cleaned, cat_clean, item_id, division, category, subcategory)
 
-        # Assign labels where 2 of 3 string metrics agree
-        cleaned = assign_labels(cleaned,
-                                labels=[match_dict["label"] for match_dict in matching_params]
-                                )
+    logging.info(f"Number of fuzzyMatch labels: {len(cleaned.loc[cleaned['label_fuzzyMatch'] == 1])}")
+    logging.info(f"Number of negative labels: {len(cleaned.loc[cleaned['label_fuzzyMatch'] == 0])}")
+    logging.info('Word Vectors')
 
-        # perform broad category cleaning for accurate fuzzy labels
-        cleaned = clean_labels(cleaned, cat_clean, item_id, division, category, subcategory)
-
-        logging.info(f"Number of fuzzyMatch labels: {len(cleaned.loc[cleaned['label_fuzzyMatch'] == 1])}")
-        logging.info(f"Number of negative labels: {len(cleaned.loc[cleaned['label_fuzzyMatch'] == 0])}")
-        logging.info('Word Vectors')
-
-        if len(cleaned.loc[cleaned['label_fuzzyMatch'] == 0]) == 0:
-            try:
-                embeddings_dict = create_word_vectors(cleaned, wv_names, **word_vectorizer_params)
-
-            except IndexError:
-                # if we get an IndexError, it is likely there are not any negative labels
-                raise LabellingError("No labels found for at least one class. Check class label counts and try"
-                                     + " adjusting fuzzy matching hyperparameters")
-
-        else:
+    if len(cleaned.loc[cleaned['label_fuzzyMatch'] == 0]) == 0:
+        try:
             embeddings_dict = create_word_vectors(cleaned, wv_names, **word_vectorizer_params)
 
-        logging.info("Label propagation")
-        cleaned = run_label_propagation(embeddings_dict, cleaned)
+        except IndexError:
+            # if we get an IndexError, it is likely there are not any negative labels
+            raise LabellingError("No labels found for at least one class. Check class label counts and try"
+                                 + " adjusting fuzzy matching hyperparameters")
 
-        logging.info("Finding modal labels")
-        cleaned = get_modal_labels(cleaned, methods=list(embeddings_dict.keys()))
+    else:
+        embeddings_dict = create_word_vectors(cleaned, wv_names, **word_vectorizer_params)
 
-        return cleaned
+    logging.info("Label propagation")
+    cleaned = run_label_propagation(embeddings_dict, cleaned)
+
+    logging.info("Finding modal labels")
+    cleaned = get_modal_labels(cleaned, methods=list(embeddings_dict.keys()))
+
+    return cleaned
 
 
 def clean_with_common_words(common_words, data, names, n_words, stop_words):
