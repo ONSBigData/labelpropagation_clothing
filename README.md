@@ -17,8 +17,7 @@ All code in this project is written using Python 3.7 and the required python mod
 the [requirements file](requirements.txt). 
 
 In order to run the pipeline use the [ipython notebook](label_propagation_and_classification.ipynb).
-A [static rendering](label_propagation_and_classification.html) of the notebook is also provided in 
-(with associated images in [figs directory](./figs)).
+A [static rendering](https://onsbigdata.github.io/labelpropagation_clothing/) of the notebook is also provided.
 
 ## The source files to run this notebooks are:
 * [clean_most_common.py](src/clean_most_common.py) - functions to fine the most common words in the text and select only products containing these words
