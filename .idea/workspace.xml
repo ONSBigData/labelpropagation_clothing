@@ -1,24 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="37c9421d-02de-416d-ac76-a250e79c283e" name="Default Changelist" comment="refactor: refactor of the code, adding docstrings and updating the documentation around the notebook.&#10;&#10;The code has had comments added and been refactored using black. The notebook has had the markdown improved and extended. There is also a static html version of the notebook for comparison">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/label_propagation_and_classification.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output_26_0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output_41_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output_44_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/output_48_3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/labelpropagation_clothing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/labelpropagation_clothing.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="37c9421d-02de-416d-ac76-a250e79c283e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/label_propagation_and_classification-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/label_propagation_and_classification-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Label_matching.py" beforeDir="false" afterPath="$PROJECT_DIR$/Label_matching.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Word_vectors.py" beforeDir="false" afterPath="$PROJECT_DIR$/Word_vectors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clean_most_common.py" beforeDir="false" afterPath="$PROJECT_DIR$/clean_most_common.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/label_propagation_and_classification.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/label_propagation_and_classification.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/labelling_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/labelling_pipeline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seed_labels.json" beforeDir="false" afterPath="$PROJECT_DIR$/seed_labels.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +62,14 @@
       <option name="presentableId" value="Default" />
       <updated>1573068398510</updated>
     </task>
+    <task id="LOCAL-00001" summary="refactor: refactor of the code, adding docstrings and updating the documentation around the notebook.&#10;&#10;The code has had comments added and been refactored using black. The notebook has had the markdown improved and extended. There is also a static html version of the notebook for comparison">
+      <created>1578657665886</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1578657665886</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -105,10 +97,10 @@
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
     <state x="200" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/65.24.1855.1056@65.24.1855.1056" timestamp="1576229773373" />
-    <state x="198" y="114" width="1691" height="891" key="CommitChangelistDialog2" timestamp="1578657623403">
+    <state x="198" y="114" width="1691" height="891" key="CommitChangelistDialog2" timestamp="1578657665547">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
-    <state x="198" y="114" width="1691" height="891" key="CommitChangelistDialog2/65.24.1855.1056/1920.0.1920.1080@65.24.1855.1056" timestamp="1578657623403" />
+    <state x="198" y="114" width="1691" height="891" key="CommitChangelistDialog2/65.24.1855.1056/1920.0.1920.1080@65.24.1855.1056" timestamp="1578657665547" />
     <state x="591" y="164" key="CommitChangelistDialog2/65.24.1855.1056@65.24.1855.1056" timestamp="1576248820272" />
     <state x="523" y="311" key="FileChooserDialogImpl" timestamp="1576229763415">
       <screen x="65" y="24" width="1855" height="1056" />
@@ -142,6 +134,10 @@
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
     <state x="65" y="24" width="928" height="1056" key="SettingsEditor/65.24.1855.1056@65.24.1855.1056" timestamp="1578498647020" />
+    <state x="627" y="289" key="Vcs.Push.Dialog.v2" timestamp="1578658138381">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="627" y="289" key="Vcs.Push.Dialog.v2/65.24.1855.1056/1920.0.1920.1080@65.24.1855.1056" timestamp="1578658138381" />
     <state x="396" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1578647650212">
       <screen x="65" y="24" width="1855" height="1056" />
     </state>
