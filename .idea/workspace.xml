@@ -1,25 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="37c9421d-02de-416d-ac76-a250e79c283e" name="Default Changelist" comment="refactor: added new source directory structure and makefile update">
-      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/label_propagation_and_classification-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/label_propagation_and_classification-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Label_matching.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Label_matching.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Word_vectors.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Word_vectors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clean_most_common.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/clean_most_common.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clothing_mock_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/clothing_mock_data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/label_propagation_and_classification.html" beforeDir="false" afterPath="$PROJECT_DIR$/label_propagation_and_classification.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/label_propagation_and_classification.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/label_propagation_and_classification.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/labelling_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/labelling_pipeline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_26_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/figs/output_26_0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_41_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/figs/output_41_1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_44_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/figs/output_44_2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output_48_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/figs/output_48_3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seed_labels.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/seed_labels.json" afterDir="false" />
+    <list default="true" id="37c9421d-02de-416d-ac76-a250e79c283e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +92,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
