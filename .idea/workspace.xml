@@ -1,79 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="37c9421d-02de-416d-ac76-a250e79c283e" name="Default Changelist" comment="">
+    <list default="true" id="37c9421d-02de-416d-ac76-a250e79c283e" name="Default Changelist" comment="refactor: refactor of the code, adding docstrings and updating the documentation around the notebook.&#10;&#10;The code has had comments added and been refactored using black. The notebook has had the markdown improved and extended. There is also a static html version of the notebook for comparison">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/label_propagation_and_classification.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output_26_0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output_41_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output_44_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/output_48_3.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/labelpropagation_clothing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/labelpropagation_clothing.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/label_propagation_and_classification-Copy1-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/label_propagation_and_classification-Copy1.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/label_propagation_and_classification-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/label_propagation_and_classification-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Label_matching.py" beforeDir="false" afterPath="$PROJECT_DIR$/Label_matching.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Word_vectors.py" beforeDir="false" afterPath="$PROJECT_DIR$/Word_vectors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clean_most_common.py" beforeDir="false" afterPath="$PROJECT_DIR$/clean_most_common.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/label_propagation_and_classification.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/label_propagation_and_classification.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/labelling_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/labelling_pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seed_labels.json" beforeDir="false" afterPath="$PROJECT_DIR$/seed_labels.json" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/labelling_pipeline.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-90">
-              <caret line="42" column="3" lean-forward="true" selection-start-line="42" selection-start-column="3" selection-end-line="42" selection-end-column="3" />
-              <folding>
-                <element signature="e#184#200#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Word_vectors.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1560">
-              <caret line="26" column="15" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/clean_most_common.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1635">
-              <caret line="116" column="35" selection-start-line="116" selection-start-column="35" selection-end-line="116" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>stopwords</find>
-      <find>subcategory</find>
-      <find>clea</find>
-      <find>Word_vectors</find>
-      <find>doc2vec_mod</find>
-      <find>remove</find>
-      <find>names</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>stop_words</replace>
-      <replace>tqdm</replace>
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/clean_most_common.py" />
-        <option value="$PROJECT_DIR$/Word_vectors.py" />
-        <option value="$PROJECT_DIR$/labelling_pipeline.py" />
-      </list>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="refactor" />
+      </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectConfigurationFiles">
     <option name="files">
@@ -85,30 +43,27 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
-    <option name="y" value="25" />
-    <option name="width" value="904" />
-    <option name="height" value="1053" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes />
+  <component name="ProjectId" id="1UsZgxOGpGxPxIABAe6Bkq8eCbQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -125,61 +80,84 @@
     </task>
     <servers />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="0" y="25" width="904" height="1053" extended-state="4" />
-    <editor active="true" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.37167302" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/label_propagation_and_classification.ipynb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Label_matching.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-958" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clean_most_common.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1635">
-          <caret line="116" column="35" selection-start-line="116" selection-start-column="35" selection-end-line="116" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Word_vectors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1560">
-          <caret line="26" column="15" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/labelling_pipeline.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90">
-          <caret line="42" column="3" lean-forward="true" selection-start-line="42" selection-start-column="3" selection-end-line="42" selection-end-column="3" />
-          <folding>
-            <element signature="e#184#200#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="refactor: refactor of the code, adding docstrings and updating the documentation around the notebook.&#10;&#10;The code has had comments added and been refactored using black. The notebook has had the markdown improved and extended. There is also a static html version of the notebook for comparison" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: refactor of the code, adding docstrings and updating the documentation around the notebook.&#10;&#10;The code has had comments added and been refactored using black. The notebook has had the markdown improved and extended. There is also a static html version of the notebook for comparison" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="598" y="229" width="800" height="727" key="#Intentions" timestamp="1576245404525">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="598" y="229" width="800" height="727" key="#Intentions/65.24.1855.1056@65.24.1855.1056" timestamp="1576245404525" />
+    <state x="200" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576229773373">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="200" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/65.24.1855.1056@65.24.1855.1056" timestamp="1576229773373" />
+    <state x="198" y="114" width="1691" height="891" key="CommitChangelistDialog2" timestamp="1578657623403">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="198" y="114" width="1691" height="891" key="CommitChangelistDialog2/65.24.1855.1056/1920.0.1920.1080@65.24.1855.1056" timestamp="1578657623403" />
+    <state x="591" y="164" key="CommitChangelistDialog2/65.24.1855.1056@65.24.1855.1056" timestamp="1576248820272" />
+    <state x="523" y="311" key="FileChooserDialogImpl" timestamp="1576229763415">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="523" y="311" key="FileChooserDialogImpl/65.24.1855.1056@65.24.1855.1056" timestamp="1576229763415" />
+    <state width="1762" height="286" key="GridCell.Tab.0.bottom" timestamp="1578656987098">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1762" height="286" key="GridCell.Tab.0.bottom/65.24.1855.1056/1920.0.1920.1080@65.24.1855.1056" timestamp="1578656987098" />
+    <state width="1832" height="296" key="GridCell.Tab.0.bottom/65.24.1855.1056@65.24.1855.1056" timestamp="1576497207043" />
+    <state width="1762" height="286" key="GridCell.Tab.0.center" timestamp="1578656987097">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1762" height="286" key="GridCell.Tab.0.center/65.24.1855.1056/1920.0.1920.1080@65.24.1855.1056" timestamp="1578656987097" />
+    <state width="1832" height="296" key="GridCell.Tab.0.center/65.24.1855.1056@65.24.1855.1056" timestamp="1576497207042" />
+    <state width="1762" height="286" key="GridCell.Tab.0.left" timestamp="1578656987097">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1762" height="286" key="GridCell.Tab.0.left/65.24.1855.1056/1920.0.1920.1080@65.24.1855.1056" timestamp="1578656987097" />
+    <state width="1832" height="296" key="GridCell.Tab.0.left/65.24.1855.1056@65.24.1855.1056" timestamp="1576497207040" />
+    <state width="1762" height="286" key="GridCell.Tab.0.right" timestamp="1578656987098">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state width="1762" height="286" key="GridCell.Tab.0.right/65.24.1855.1056/1920.0.1920.1080@65.24.1855.1056" timestamp="1578656987098" />
+    <state width="1832" height="296" key="GridCell.Tab.0.right/65.24.1855.1056@65.24.1855.1056" timestamp="1576497207042" />
+    <state x="433" y="265" key="RollbackChangesDialog" timestamp="1576233705110">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="433" y="265" key="RollbackChangesDialog/65.24.1855.1056@65.24.1855.1056" timestamp="1576233705110" />
+    <state x="65" y="24" width="928" height="1056" key="SettingsEditor" timestamp="1578498647020">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="65" y="24" width="928" height="1056" key="SettingsEditor/65.24.1855.1056@65.24.1855.1056" timestamp="1578498647020" />
+    <state x="396" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1578647650212">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="396" y="380" key="com.intellij.ide.util.TipDialog/65.24.1855.1056/1920.0.1920.1080@65.24.1855.1056" timestamp="1578647650212" />
+    <state x="396" y="380" key="com.intellij.ide.util.TipDialog/65.24.1855.1056@65.24.1855.1056" timestamp="1578498489515" />
+    <state x="738" y="290" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1578657161795">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="738" y="290" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/65.24.1855.1056/1920.0.1920.1080@65.24.1855.1056" timestamp="1578657161795" />
+    <state x="973" y="324" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey" timestamp="1578657463092">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="973" y="324" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey/65.24.1855.1056/1920.0.1920.1080@65.24.1855.1056" timestamp="1578657463092" />
+    <state x="655" y="236" width="672" height="678" key="search.everywhere.popup" timestamp="1576234129180">
+      <screen x="65" y="24" width="1855" height="1056" />
+    </state>
+    <state x="655" y="236" width="672" height="678" key="search.everywhere.popup/65.24.1855.1056@65.24.1855.1056" timestamp="1576234129180" />
   </component>
 </project>
