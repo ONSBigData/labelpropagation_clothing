@@ -14,7 +14,10 @@ In addition to the product name we also randomly select a broad and narrow retai
 
 ## Running the code
 All code in this project is written using Python 3.7 and the required python models can be installed using
-the [requirements file](requirements.txt). 
+the [requirements file](requirements.txt) using:
+```
+  pip install -r requirements.txt
+```
 
 In order to run the pipeline use the [ipython notebook](label_propagation_and_classification.ipynb).
 A [static rendering](https://onsbigdata.github.io/labelpropagation_clothing/) of the notebook is also provided.
