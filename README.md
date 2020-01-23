@@ -16,7 +16,16 @@ In addition to the product name we also randomly select a broad and narrow retai
 All code in this project is written using Python 3.7 and the required python models can be installed using
 the [requirements file](requirements.txt) using:
 ```
-  pip install -r requirements.txt
+pip install -r requirements.txt
+```
+
+The code also makes use of the nltk tokenizer and to use this it is necessary to download the associated tokenizer 
+dataset. In this work we use the punkt tokenizer. The notebook code checks for the presence of punkt and if it is not
+ installed then it is downloaded. 
+To download it yourself run:
+```python
+import nltk
+nltk.download('punkt')
 ```
 
 In order to run the pipeline use the [ipython notebook](label_propagation_and_classification.ipynb).
